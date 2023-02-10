@@ -1,4 +1,4 @@
-This first file integers.txt.txt contains the integers we use in the code. Make sure to add the integers.txt.txt file before running the code. This files has 10 lines and each line contains 10 integers. if the file is not added to the coding folder the code will generate file not found.
+This first file integers.txt.txt contains the integers we use in the code. Make sure to add the integers.txt.txt file before running the code. if the file is not added to the coding folder the code will generate file not found.
 
 23 44 55 60 71 82  5 12 90 68
  2 10 70 54 22 53 87 81 20 41
