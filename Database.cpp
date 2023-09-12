@@ -33,7 +33,7 @@ int Database::integerPresent(int existInteger, int* data, int array_size)
 /// modifying the value os an integer ///
 int Database::modification(int index, int value, int* data, int array_size)
 {
-	try
+	try                                                             // adding try and catch blocks for errors //
 	{
 		if (index > array_size || index < 0)
 		{
@@ -56,16 +56,14 @@ void Database::newIntegerAdded(int value, int*& data, int& size) {
 	int new_size = size + 1;
 	int* data2 = new int[new_size];
 	data2[size] = value;
-	try 
-	{
+	try {                                                      // adding try and catch blocks for errors//
 		for (int count = 0; count < size; count++)
 		{
 			data2[count] = data[count];
 		}
 		size = new_size;
 		data = data2;
-	}
-	catch (const bad_alloc& e) {
+	} catch (const bad_alloc& e) {
 		cerr << "Error: Failed to add integer to the array" << endl;
 	}
 
