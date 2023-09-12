@@ -7,7 +7,7 @@ using namespace std;
 
 /// displaying the array /// 
 void Database::display(int* data, int array_size) {
-	cout << "The array list : ";
+	cout << "The array list : " << endl << endl;
 	for (int count = 0; count < array_size; count++)
 		cout << " " << data[count];
 	cout << endl;
@@ -33,25 +33,22 @@ int Database::integerPresent(int existInteger, int* data, int array_size)
 /// modifying the value os an integer ///
 int Database::modification(int index, int value, int* data, int array_size)
 {
-	if (index > array_size)
+	try
 	{
-		cout << "The index is not in the database.";
-		system("pause");
-		return 0;
-		cout << endl;
+		if (index > array_size || index < 0)
+		{
+			throw out_of_range("Invalid index");
+		}
+
+		int old_value = data[index];
+		data[index] = value;
+		return old_value;
+	}
+	catch (const out_of_range& e) {
+		cerr << "Error: " << e.what() << endl;
+		return -1;
 	}
 
-	if (index < 0)
-	{
-		cout << " The index is not in the database.";
-		system("pause");
-		return 0;
-		cout << endl;
-	}
-
-	int old_value = data[index];
-	data[index] = value;
-	return old_value;
 }
 // adding a new value to the array //
 void Database::newIntegerAdded(int value, int*& data, int& size) {
@@ -59,14 +56,18 @@ void Database::newIntegerAdded(int value, int*& data, int& size) {
 	int new_size = size + 1;
 	int* data2 = new int[new_size];
 	data2[size] = value;
-	for (int count = 0; count < size; count++)
+	try 
 	{
-		data2[count] = data[count];
+		for (int count = 0; count < size; count++)
+		{
+			data2[count] = data[count];
+		}
+		size = new_size;
+		data = data2;
 	}
-	size = new_size;
-	data = data2;
-
-
+	catch (const bad_alloc& e) {
+		cerr << "Error: Failed to add integer to the array" << endl;
+	}
 
 }
 // removing the integer from the arrar //
