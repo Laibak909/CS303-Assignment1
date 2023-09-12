@@ -73,7 +73,7 @@ int Database::integerPresent(int existInteger, int* data, int array_size)
 /// modifying the value os an integer ///
 int Database::modification(int index, int value, int* data, int array_size)
 {
-	try
+	try                                                                 // using try and catch blocks //
 	{
 		if (index > array_size || index < 0)
 		{
